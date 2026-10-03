@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+test-results/
+report.html
+assets/
+results.xml
+.env
+# AI-written tests must be reviewed by a human before they join the suite
+tests/test_generated.py

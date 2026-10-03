@@ -1,0 +1,5 @@
+pytest
+pytest-playwright
+playwright>=1.49
+pytest-html
+anthropic
