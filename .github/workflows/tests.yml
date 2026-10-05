@@ -1,0 +1,23 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - run: playwright install --with-deps chromium
+      - run: pytest --junitxml=results.xml
+      - name: AI triage (Claude Code)
+        if: failure()
+        run: |
+          curl -fsSL https://claude.ai/install.sh | bash
+          "$HOME/.local/bin/claude" -p "$(cat .github/triage-prompt.md)" \
+            --allowedTools "Read" >> "$GITHUB_STEP_SUMMARY"
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: report, path: report.html }
