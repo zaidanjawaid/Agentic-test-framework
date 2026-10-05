@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pytest *)",
+      "mcp__playwright"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
+    ]
+  }
+}
