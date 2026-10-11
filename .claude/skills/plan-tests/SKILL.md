@@ -12,3 +12,4 @@ Feature: $ARGUMENTS
    ID | Scenario | Steps | Expected result
 3. Cover happy path, negative, boundary and security cases.
 4. Mark anything you could not verify as "ASSUMPTION".
+5. Save the planned test cases in md file in this folder planned-cases/

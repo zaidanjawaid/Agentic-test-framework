@@ -8,3 +8,5 @@ results.xml
 .env
 # AI-written tests must be reviewed by a human before they join the suite
 tests/test_generated.py
+.vscode/settings.json
+.playwright-mcp
